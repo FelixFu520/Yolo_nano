@@ -124,43 +124,46 @@ root/
                 instances_train2017.json
 </pre>
 
+### 安装coco数据集读取库
+方式1:    
+To use COCO dataset loader, _pycocotools_ should be installed via the following command.
+```bash 
+pip install "git+https://github.com/philferriere/cocoapi.git#egg=pycocotools&subdirectory=PythonAPI"
+```
+方式2:    
+```bash
+git clone https://github.com/cocodataset/cocoapi
+cd cocoapi/PythonAPI
+pip install Cython
+pip install pycocotools
+make
+python setup.py install
+```
+
 # 4 开发环境
 
+```bash
+pip list
+```
+list结果参考[requirements.txt](requirements.txt)
 # 5 代码
-
+To train on COCO dataset:
+```bash
+python3 main.py --dataset_path datasets/coco/images --annotation_path datasets/coco/annotations 
+                --dataset coco --conf_thresh=0.8 --gpu
+```
 # 6 部署Nano
 
 
 
 
-# 
-<pre>
-root/
-  datasets/
-    coco/
-      images/
-        train/
-        val/
-      annotation/
-        instances_train2017.json
-</pre>
 
 # Installation
 ```bash
 git clone https://github.com/wangsssky/YOLO-Nano.git
 pip3 install -r requirements.txt
 ```
-# COCO
-To use COCO dataset loader, _pycocotools_ should be installed via the following command.
-```bash 
-pip install "git+https://github.com/philferriere/cocoapi.git#egg=pycocotools&subdirectory=PythonAPI"
-```
 
-To train on COCO dataset:
-```bash
-python3 main.py --dataset_path datasets/coco/images --annotation_path datasets/coco/annotations 
-                --dataset coco --conf_thresh=0.8 --gpu
-```
 
 # Convert to onnx
 - cd deploy, run convert2onnx.py
