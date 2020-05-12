@@ -88,7 +88,7 @@ Yolo与Fast R-CNN的误差对比分析如下图所示：
 最后不得不谈一下Yolo的缺点，首先Yolo各个单元格仅仅预测两个边界框，而且属于一个类别。对于小物体，Yolo的表现会不如人意。这方面的改进可以看SSD，其采用多尺度单元格。也可以看Faster R-CNN，其采用了anchor boxes。Yolo对于在物体的宽高比方面泛化率低，就是无法定位不寻常比例的物体。当然Yolo的定位不准确也是很大的问题。
 
 # 2 项目结构
-"""
+<pre>
 root/
     data/
     datasets/
@@ -111,10 +111,10 @@ root/
     test.py
     train.py
     val.py
-"""
+</pre>
 
 # 3 数据集
-"""
+<pre>
     datasets/
         coco/
             images/
@@ -122,7 +122,7 @@ root/
                 val/
             annotation/
                 instances_train2017.json
-"""
+</pre>
 
 # 4 开发环境
 
