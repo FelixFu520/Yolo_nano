@@ -146,6 +146,9 @@ python setup.py install
 pip list
 ```
 list结果参考[requirements.txt](requirements.txt)
+
+
+
 # 5 代码
 To train on COCO dataset:
 ```bash
@@ -153,19 +156,7 @@ python3 main.py --dataset_path datasets/coco/images --annotation_path datasets/c
                 --dataset coco --conf_thresh=0.8 --gpu
 ```
 # 6 部署Nano
-
-
-
-
-
-# Installation
-```bash
-git clone https://github.com/wangsssky/YOLO-Nano.git
-pip3 install -r requirements.txt
-```
-
-
-# Convert to onnx
+### Convert to onnx
 - cd deploy, run convert2onnx.py
 - run ```python -m onnxsim yolo-nano.onnx simplified.onnx```, you may install onnx-simplifier first.
 - try run_onnx.py, test it by onnx runtime
