@@ -12,19 +12,22 @@ class Opt():
 
     def initialize(self):
         self.parser.add_argument("--print_options", default=True, help="print options or not")
+        
         # project root, dataset, checkpoint resume and pretrained model path
         self.parser.add_argument("--project_root", type=str, default=".", help="root directory path of project")
+        
         self.parser.add_argument("--dataset", default="coco", help="specify the type of custom dataset to create")
-        self.parser.add_argument("--dataset_path", type=str, default="datasets/coco/jpg", help="directory path of dataset")
-        self.parser.add_argument("--train_json", type=str, default='train.json', help="train json name")
-        self.parser.add_argument("--val_json", type=str, default='val.json', help="validate json name")
-        self.parser.add_argument("--test_json", type=str, default='val.json', help="test json name")
-
-        self.parser.add_argument("--annotation_path", type=str, default="datasets/coco/annotation", help="file path of annotations")
+        self.parser.add_argument("--dataset_path", type=str, default="datasets/coco/images", help="directory path of dataset")
+        self.parser.add_argument("--train_json", type=str, default='instances_train2017.json', help="train json name")
+        self.parser.add_argument("--val_json", type=str, default='instances_val2017.json', help="validate json name")
+        self.parser.add_argument("--test_json", type=str, default='instances_val2017.json', help="test json name")
+        self.parser.add_argument("--annotation_path", type=str, default="datasets/coco/annotations", help="file path of annotations")
         self.parser.add_argument("--classname_path", type=str, default="datasets/coco.names", help="file path of classnames for visualizer")
+        
         self.parser.add_argument("--checkpoint_path", type=str, default="checkpoints", help="directory path of checkpoints")
         self.parser.add_argument("--resume_path", type=str, default="", help="save data (.pth) of previous training")
 
+        
         # common options that are used in both train and test
         self.parser.add_argument("--manual_seed", type=int, default=42, help="manual_seed of pytorch")
         self.parser.add_argument("--gpu", action="store_true", help="if true, cuda is not used", default=False)
@@ -34,10 +37,10 @@ class Opt():
 
         self.parser.add_argument("--model", type=str, default="YOLO-Nano", help="choose which model to use")
         self.parser.add_argument("--image_size", type=int, default=416, help="size of image")
-        self.parser.add_argument("--num_classes", type=int, default=4, help="# of classes of the dataset")
+        self.parser.add_argument("--num_classes", type=int, default=80, help="# of classes of the dataset")
         self.parser.add_argument('--num_epochs', type=int, default=300, help='# of epochs')
         self.parser.add_argument('--begin_epoch', type=int, default=0, help='# of epochs')
-        self.parser.add_argument("--batch_size", type=int, default=4, help="batch size")
+        self.parser.add_argument("--batch_size", type=int, default=32, help="batch size")
         self.parser.add_argument('--gradient_accumulations', type=int, default=1, help="number of gradient accums before step")
 
         self.parser.add_argument("--optimizer",type=str, default="Adam", help="optimizer (Adam | SGD | AdaBound)")
@@ -46,6 +49,7 @@ class Opt():
         self.parser.add_argument('--weight_decay', type=float, default=1e-3, help="weight_decay for optimizer")
         self.parser.add_argument('--final_lr', type=float, default=0.1, help="final learning rate for AdaBound optimizer")
 
+        
         # object detection options
         self.parser.add_argument("--conf_thresh", type=float, default=.5)
         self.parser.add_argument("--nms_thresh", type=float, default=.5)
